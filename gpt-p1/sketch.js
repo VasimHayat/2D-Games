@@ -110,7 +110,25 @@ function displayGameOver() {
     textSize(40);
     textAlign(CENTER, CENTER);
     text("Game Over", width / 2, height / 2);
+    
+    fill(255);
+    textSize(20);
+    text("Press R to Play Again", width / 2, height / 2 + 40);
 }
+
+function keyPressed() {
+    if (keyCode === 82 && gameOver) { // 'R' key to restart
+        resetGame();
+    }
+}
+
+function resetGame() {
+    gameOver = false;
+    score = 0;
+    bullets = [];
+    enemies = [];
+    player = new Player();
+} 
 
 class Player {
     constructor() {
