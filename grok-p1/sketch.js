@@ -99,19 +99,20 @@ function draw() {
             }
         }
 
-        // Display score
+        // Display score with LEFT alignment to fix chopping
         fill(255);
         textSize(20);
+        textAlign(LEFT); // NEW: Set alignment to LEFT so score starts at x = 10
         text(`Score: ${score}`, 10, 30);
     } else { 
         fill(255);
         textSize(40);
-        textAlign(CENTER, CENTER);
+        textAlign(CENTER, CENTER); // Center alignment for game-over text
         text("Game Over", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 - 20);
         textSize(20);
         text(`Final Score: ${score}`, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 20);
 
-        // NEW: Draw the "Play Again" button
+        // Draw the "Play Again" button
         textSize(20);
         text("Play Again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 60);
 
@@ -122,7 +123,7 @@ function draw() {
     }
 }
 
-// NEW: Reset the game to start over
+// Reset the game to start over
 function resetGame() {
     player = new Player(CANVAS_WIDTH / 2 - PLAYER_SIZE / 2, CANVAS_HEIGHT - PLAYER_SIZE - 10);
     enemies = [];
@@ -228,12 +229,12 @@ function keyReleased() {
     if (keyCode === RIGHT_ARROW) moveRight = false;
 }
 
-// NEW: Check if the "Play Again" button is clicked
+// Check if the "Play Again" button is clicked
 function mousePressed() {
     if (gameOver) {
         // Define the button area (approx. 100x40 pixels centered at CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 60)
         let buttonX = CANVAS_WIDTH / 2 - 50; // Left edge
-        let buttonY = CANVAS_HEIGHT / 2 + 40; // Top edge (a bit above the text for better click area)
+        let buttonY = CANVAS_HEIGHT / 2 + 40; // Top edge
         let buttonWidth = 100;
         let buttonHeight = 40;
 
